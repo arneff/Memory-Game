@@ -1,7 +1,20 @@
 /*
  * Create a list that holds all of your cards
  */
+ let cards = ['fa-diamond', 'fa-paper-plane-o',
+              'fa-anchor', 'fa-bolt',
+              'fa-cube', 'fa-anchor',
+              'fa-leaf', 'fa-bicycle',
+              'fa-diamond', 'fa-bomb',
+              'fa-leaf', 'fa-bomb',
+              'fa-bolt', 'fa-bicycle',
+              'fa-paper-plane-o', 'fa-cube'];
 
+/* clears existing cards to prepare for new round */
+function clearCards(){
+  $('.card').find('i').remove();
+}
+clearCards();
 
 /*
  * Display the cards on the page
@@ -9,6 +22,24 @@
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+function dealCards(){
+  let cardIndex;
+  let tagIndex;
+  let html;
+  $.each(shuffle(cards), function (index, value){
+      cardIndex = index;
+      html = ('<i class="fa ' + value + '"></i>');
+  });
+  $.each($('.card'), function (index, value){
+    tagIndex = index;
+  });
+  if (cardIndex === tagIndex){
+    $('.card').append(html);
+  }
+
+}
+dealCards();
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -24,8 +55,6 @@ function shuffle(array) {
 
     return array;
 }
-
-
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
