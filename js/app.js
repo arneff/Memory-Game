@@ -10,11 +10,12 @@
               'fa-bolt', 'fa-bicycle',
               'fa-paper-plane-o', 'fa-cube'];
 
+let openCards = [];
 /* clears existing cards to prepare for new round */
 function clearCards(){
   $('.card').find('i').remove();
 }
-clearCards();
+
 
 // shuffle the list of cards using the provided "shuffle" method below
 shuffle(cards);
@@ -22,9 +23,11 @@ shuffle(cards);
  /*
   *    - loop through each card and create its HTML
   *   - Display the cards on the page
+  *   - add each card's HTML to the page
   */
 
  function dealCards(){
+   clearCards();
    $.each(cards, function(index, value){
      let liNode = document.createElement('li'); //create new li element since clearCards() removed it
      liNode.className = 'fa ' + value; //assign class name to li
@@ -32,11 +35,8 @@ shuffle(cards);
    });
  }
  dealCards();
-  /*
- *   - add each card's HTML to the page
- */
 
-
+//show card when clicked
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -56,8 +56,24 @@ function shuffle(array) {
 
 /*
  * set up the event listener for a card. If a card is clicked:
+ */
+
+ $('.deck').find('.card').click(function(){
+   showCard();
+ });
+ /*
  *  - display the card's symbol (put this functionality in another function that you call from this one)
+ */
+ function showCard(){
+   $('.deck').find('.card').click(function(){
+     $(this).toggleClass("show open");
+   });
+ }
+/*
  *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
+ */
+
+/*
  *  - if the list already has another card, check to see if the two cards match
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
