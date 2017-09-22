@@ -9,8 +9,6 @@
               'fa-leaf', 'fa-bomb',
               'fa-bolt', 'fa-bicycle',
               'fa-paper-plane-o', 'fa-cube'];
-let cLen = $('.card').length;
-let html = $('.card');
 
 /* clears existing cards to prepare for new round */
 function clearCards(){
@@ -27,7 +25,9 @@ shuffle(cards);
  */
  function dealCards(){
    $.each(cards, function(index, value){
-     $('.card')[index].append('<i class="fa ' + value + '"></i>');
+     let liNode = document.createElement('li');
+     liNode.className = 'fa ' + value;
+     $('.card')[index].append(liNode);
    });
  }
  dealCards();
