@@ -15,14 +15,15 @@ function clearCards(){
   $('.card').find('i').remove();
 }
 clearCards();
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- */
+
+// shuffle the list of cards using the provided "shuffle" method below
 shuffle(cards);
+
  /*
- *   - loop through each card and create its HTML
- */
+  *    - loop through each card and create its HTML
+  *   - Display the cards on the page
+  */
+
  function dealCards(){
    $.each(cards, function(index, value){
      let liNode = document.createElement('li'); //create new li element since clearCards() removed it
