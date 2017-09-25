@@ -11,6 +11,7 @@
               'fa-paper-plane-o', 'fa-cube'];
 
 let openCards = [];
+let move = 0;
 /* clears existing cards to prepare for new round */
 function clearCards(){
   $('.card').find('i').remove();
@@ -60,6 +61,8 @@ function shuffle(array) {
 
  $('.deck').find('.card').click(function(){
    showCard($(this));
+   open($(this));
+   match(openCards);
  });
  /*
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -71,9 +74,17 @@ function shuffle(array) {
  *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
  */
 function open(card){
+  if (card.hasClass('open')){
+    openCards.push(card.children());
+  }
 }
 /*
  *  - if the list already has another card, check to see if the two cards match
+ */
+function match(array){
+  console.log(openCards);
+}
+/*
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
