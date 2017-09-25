@@ -59,20 +59,19 @@ function shuffle(array) {
  */
 
  $('.deck').find('.card').click(function(){
-   showCard();
+   showCard($(this));
  });
  /*
  *  - display the card's symbol (put this functionality in another function that you call from this one)
  */
- function showCard(){
-   $('.deck').find('.card').click(function(){
-     $(this).toggleClass("show open");
-   });
+ function showCard(card){
+   card.toggleClass("show open");
  }
 /*
  *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
  */
-
+function open(card){
+}
 /*
  *  - if the list already has another card, check to see if the two cards match
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
