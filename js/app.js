@@ -85,9 +85,12 @@ function match(array){
   if (array.length > 1){
     if (openCards[0][0].className  === openCards[1][0].className) {
       console.log("match")
+      matchLock();
     }
     else {
       console.log('not match');
+      setTimeout(notMatch, 800);
+      return false;
     }
   }
 }
@@ -95,11 +98,24 @@ function match(array){
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
  */
 function matchLock(){
-  
+  $.each(openCards, function(index, value){
+    $(this).parent().addClass('match');
+    openCards = [];
+  });
+
 }
 
 /*
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
+ * if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
+ */
+
+ function notMatch(){
+   $.each(openCards, function(index, value){
+     $(this).parent().removeClass('open show');
+     openCards = [];
+   });
+}
+/*
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
