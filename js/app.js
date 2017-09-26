@@ -13,6 +13,7 @@
 let openCards = [];
 let move = 0;
 let pairs = 0;
+let stars = 0;
 /* clears existing cards to prepare for new round */
 function clearCards(){
   $('.card').find('i').remove();
@@ -65,11 +66,10 @@ function shuffle(array) {
    gameOver();
  });
 
+ //if player wants to startgame over - refresh page by clicking restart button
+
  $('.restart').click(function(){
-   openCards = [];
-   $('.deck').find('.card').removeClass('open show match');
-   clearCards(); //not working
-   dealCards(); //not working
+   location.reload();
  });
 
 //display the card's symbol
@@ -127,12 +127,32 @@ function moves(){
     let moveTotal =+ move;
     $('.moves').text(moveTotal);
 
+    if (moveTotal > 10){
+      $('.stars li:last-child').empty();
+    }
+    if (moveTotal > 20){
+      $('.stars li:nth-child(2)').empty();
+    }
+    starCount(moveTotal);
 }
 
+function starCount(num){
+  if (num < 10){
+    stars = 3;
+  }
+  else if (num < 20){
+    stars = 2;
+  }
+  else {
+    stars = 1;
+  }
+}
 //if all cards have matched, display a message with the final score
 
-function gameOver(){
+function gameOver(num){
   if (pairs === 8){
-    alert('Game Over');
+    confirm('Congratulations, Game Over!\n\n' +
+      'You have a star rating of: ' + stars + '. \n\n' +
+      'It took you ' + move + ' moves! \n\n Would you like to play again?');
   }
 }
