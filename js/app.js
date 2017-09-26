@@ -37,7 +37,7 @@ shuffle(cards);
  }
  dealCards();
 
-//show card when clicked
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -55,32 +55,29 @@ function shuffle(array) {
 }
 
 
-/*
- * set up the event listener for a card. If a card is clicked:
- */
 
+//set up the event listener for a card. If a card is clicked:
  $('.deck').find('.card').click(function(){
    showCard($(this));
    open($(this));
    match(openCards);
  });
- /*
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- */
+
+//display the card's symbol
+
  function showCard(card){
    card.toggleClass("show open");
  }
-/*
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- */
+
+//add the card to a *list* of "open" cards
 function open(card){
   if (card.hasClass('open')){
     openCards.push(card.children());
   }
 }
-/*
- *  - if the list already has another card, check to see if the two cards match
- */
+
+//if the list already has another card, check to see if the two cards match
+
 function match(array){
   if (array.length > 1){
     if (openCards[0][0].className  === openCards[1][0].className) {
@@ -94,9 +91,8 @@ function match(array){
     }
   }
 }
-/*
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- */
+
+//if the cards do match, lock the cards in the open position
 function matchLock(){
   $.each(openCards, function(index, value){
     $(this).parent().addClass('match');
@@ -105,17 +101,16 @@ function matchLock(){
 
 }
 
-/*
- * if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- */
 
+//if the cards do not match, remove the cards from the list and hide the card's symbol
  function notMatch(){
    $.each(openCards, function(index, value){
      $(this).parent().removeClass('open show');
      openCards = [];
    });
 }
+// increment the move counter and display it on the page
+
 /*
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
