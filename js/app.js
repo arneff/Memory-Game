@@ -12,6 +12,7 @@
 
 let openCards = [];
 let move = 0;
+let pairs = 0;
 /* clears existing cards to prepare for new round */
 function clearCards(){
   $('.card').find('i').remove();
@@ -61,6 +62,14 @@ function shuffle(array) {
    showCard($(this));
    open($(this));
    match(openCards);
+   gameOver();
+ });
+
+ $('.restart').click(function(){
+   openCards = [];
+   $('.deck').find('.card').removeClass('open show match');
+   clearCards(); //not working
+   dealCards(); //not working
  });
 
 //display the card's symbol
@@ -81,12 +90,15 @@ function open(card){
 function match(array){
   if (array.length > 1){
     if (openCards[0][0].className  === openCards[1][0].className) {
-      console.log("match")
+      console.log("match");
       matchLock();
+      moves();
+      pairs++;
     }
     else {
       console.log('not match');
       setTimeout(notMatch, 800);
+      moves();
       return false;
     }
   }
@@ -109,8 +121,18 @@ function matchLock(){
      openCards = [];
    });
 }
-// increment the move counter and display it on the page
+// display move counter on the page
+function moves(){
+    move++;
+    let moveTotal =+ move;
+    $('.moves').text(moveTotal);
 
-/*
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
+}
+
+//if all cards have matched, display a message with the final score
+
+function gameOver(){
+  if (pairs === 8){
+    alert('Game Over');
+  }
+}
