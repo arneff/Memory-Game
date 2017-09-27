@@ -2,8 +2,12 @@
 
 ## Table of Contents
 
-* [Instructions](#instructions)
+* [Overview](#overview)
+* [How it Works](#how it works)
 * [Contributing](#contributing)
+* [Star Rating](#star rating)
+* [Contributing](#contributing)
+* [Acknowledgements](#acknowledgements)
 
 ## Overview
 
