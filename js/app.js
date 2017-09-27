@@ -14,6 +14,9 @@ let openCards = [];
 let move = 0;
 let pairs = 0;
 let stars = 0;
+let startTime = 0;
+let endTime = 0;
+let elapsedTime = 0;
 /* clears existing cards to prepare for new round */
 function clearCards(){
   $('.card').find('i').remove();
@@ -56,7 +59,10 @@ function shuffle(array) {
     return array;
 }
 
-
+//start game time
+$('.deck').one("click", function(){
+     startTime = Date.now();
+});
 
 //set up the event listener for a card. If a card is clicked:
  $('.deck').find('.card').click(function(){
@@ -151,16 +157,22 @@ function starCount(num){
 
 function gameOver(){
   if (pairs === 8){
+    endTime = Date.now();
+    time();
     let over = confirm('Congratulations, Game Over!\n\n' +
       'You have a star rating of: ' + stars + '. \n\n' +
-      'It took you ' + move + ' moves! \n\n Would you like to play again?');
+      'It took you ' + Math.round(elapsedTime) + ' seconds and ' + move + ' moves! \n\n Would you like to play again?');
 
-      if(over === true){
-        location.reload();
-      }
-      else {
+    if(over === true){
+      location.reload();
+    }
+    else {
         alert('Thanks for playing!');
-      }
+    }
   }
+}
 
+function time(){
+  elapsedTime = (endTime - startTime) / 1000;
+  console.log(elapsedTime);
 }
