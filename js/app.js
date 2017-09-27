@@ -66,7 +66,7 @@ $('.deck').one("click", function() {
 });
 
 //set up the event listener for a card. If a card is clicked:
- $('.deck').find('.card').click(function() {
+ $('.deck').find('.card').bind('click', function() {
    showCard($(this));
    open($(this));
    match(openCards);
@@ -82,22 +82,23 @@ $('.deck').one("click", function() {
 //display the card's symbol
 
  function showCard(card){
-   card.toggleClass("show open");
+   card.addClass("show open");
  }
 
 //add the card to a *list* of "open" cards
 function open(card) {
-  if (card.hasClass('open')) {
+
+  if (card.hasClass('show open')) {
     openCards.push(card.children());
   }
 }
 
-//if the list already has another card, check to see if the two cards match
 
+
+//if the list already has another card, check to see if the two cards match
 function match(array) {
   if (array.length > 1){
     if (openCards[0][0].className  === openCards[1][0].className) {
-      console.log("match");
       matchLock();
       moves();
       pairs++;
