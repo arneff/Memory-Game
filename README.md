@@ -3,9 +3,9 @@
 ## Table of Contents
 
 * [Overview](#overview)
-* [How it Works](#how it works)
+* [How it Works](#'how-it-works')
 * [Contributing](#contributing)
-* [Star Rating](#star rating)
+* [Star Rating](#star-rating)
 * [Contributing](#contributing)
 * [Acknowledgements](#acknowledgements)
 
