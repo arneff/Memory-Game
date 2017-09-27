@@ -34,9 +34,9 @@ For more information on the Udacity Project, detailed information can be found h
 
 * A new random deck is automatically dealt
 * Select two cards
-* If the cards match the will remain visible locked with a green background
-* if the cards do not match they will be hidden
-* Once all 8 pairs have been matched, the game is over
+* If the cards match they will remain visible and locked with a green background
+* If the cards do not match they will be hidden
+* Once all 8 pairs have been matched the game is over
 
 ### Star rating
 
