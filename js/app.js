@@ -97,15 +97,12 @@ function open(card) {
 //if the list already has another card, check to see if the two cards match
 function match(array) {
   if (array.length > 1){
-    console.log(array[1].parent().attr('id'));
-    console.log(openCards[0].parent().attr('id'));
     if ((array[0].parent().attr('id') != array[1].parent().attr('id')) && (openCards[0][0].className  === openCards[1][0].className) ) {
       matchLock();
       moves();
       pairs++;
     }
     else {
-      console.log('not match');
       setTimeout(notMatch, 800);
       moves();
       return false;
