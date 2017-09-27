@@ -149,10 +149,18 @@ function starCount(num){
 }
 //if all cards have matched, display a message with the final score
 
-function gameOver(num){
+function gameOver(){
   if (pairs === 8){
-    confirm('Congratulations, Game Over!\n\n' +
+    let over = confirm('Congratulations, Game Over!\n\n' +
       'You have a star rating of: ' + stars + '. \n\n' +
       'It took you ' + move + ' moves! \n\n Would you like to play again?');
+
+      if(over === true){
+        location.reload();
+      }
+      else {
+        alert('Thanks for playing!');
+      }
   }
+
 }
