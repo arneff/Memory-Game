@@ -39,7 +39,7 @@ shuffle(cards);
      let liNode = document.createElement('i'); //create new li element since clearCards() removed it
      liNode.className = 'fa ' + value; //assign class name to li
      $('.card')[index].append(liNode); // assign li to each card
-   });
+    });
  }
  dealCards();
 
@@ -87,9 +87,8 @@ $('.deck').one("click", function() {
 
 //add the card to a *list* of "open" cards
 function open(card) {
-
   if (card.hasClass('show open')) {
-    openCards.push(card.children());
+      openCards.push(card.children());
   }
 }
 
@@ -98,7 +97,9 @@ function open(card) {
 //if the list already has another card, check to see if the two cards match
 function match(array) {
   if (array.length > 1){
-    if (openCards[0][0].className  === openCards[1][0].className) {
+    console.log(array[1].parent().attr('id'));
+    console.log(openCards[0].parent().attr('id'));
+    if ((array[0].parent().attr('id') != array[1].parent().attr('id')) && (openCards[0][0].className  === openCards[1][0].className) ) {
       matchLock();
       moves();
       pairs++;
