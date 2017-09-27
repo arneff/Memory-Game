@@ -3,8 +3,7 @@
 ## Table of Contents
 
 * [Overview](#overview)
-* [How it Works](#'how-it-works')
-* [Contributing](#contributing)
+* [How it Works](#how-it-works)
 * [Star Rating](#star-rating)
 * [Contributing](#contributing)
 * [Acknowledgements](#acknowledgements)
