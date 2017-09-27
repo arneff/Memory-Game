@@ -36,7 +36,7 @@ shuffle(cards);
  function dealCards() {
    clearCards();
    $.each(cards, function(index, value) {
-     let liNode = document.createElement('li'); //create new li element since clearCards() removed it
+     let liNode = document.createElement('i'); //create new li element since clearCards() removed it
      liNode.className = 'fa ' + value; //assign class name to li
      $('.card')[index].append(liNode); // assign li to each card
    });
