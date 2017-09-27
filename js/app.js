@@ -66,7 +66,7 @@ $('.deck').one("click", function() {
 });
 
 //set up the event listener for a card. If a card is clicked:
- $('.deck').find('.card').bind('click', function() {
+ $('.deck').find('.card').click(function() {
    showCard($(this));
    open($(this));
    match(openCards);
