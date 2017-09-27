@@ -5,20 +5,50 @@
 * [Instructions](#instructions)
 * [Contributing](#contributing)
 
-## Instructions
+## Overview
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+Memory Game is a project associated with Udacity's Front-End Web Development Nanodegree
 
-To get started, open `js/app.js` and start building out the app's functionality
+The starter project presupplied some HTML and CSS styling along with the single JavaScript function shown below.
+```
+    function shuffle(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+        while (currentIndex !== 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+        return array;
+    }
+```
+I have written the rest of the functionality to meet the specifications required to complete to project.
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+For more information on the Udacity Project, detailed information can be found here: [Udacity Classroom](https://classroom.udacity.com/me).
 
 ## How it works
 
-When the game is opended, a new set of cards is dealt to the enduser. Once the user selects a card, a timer is started keeping track of gameplay time, and a counter is started keeping track of the number of moves the user had made. The goal is to match each card with is pair in as little time and moves as possible. The users raiting will decrease the more moves that are made. Once the game is over, the user has the option to play again which will start the entire game over or 'cancel' which will do nothing until the user chooses to play again.
+* A new random deck is automatically dealt
+* Select two cards
+* If the cards match the will remain visible locked with a green background
+* if the cards do not match they will be hidden
+* Once all 8 pairs have been matched, the game is over
+
+### Star rating
+
+You begin the game with 3 Stars. The more moves you make the lower your star rating will become.
+
+Try and complete the game with as many stars as possible!
+
+
 
 ## Contributing
 
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Acknowledgements
+
+* Udacity Support Team - for timely advice when I find myself stuck.
