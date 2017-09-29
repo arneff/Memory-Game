@@ -69,8 +69,6 @@ $('.deck').one("click", function() {
  $('.deck').find('.card').click(function() {
    showCard($(this));
    open($(this));
-   match(openCards);
-   gameOver();
  });
 
  //if player wants to startgame over - refresh page by clicking restart button
@@ -82,25 +80,33 @@ $('.deck').one("click", function() {
 //display the card's symbol
 
  function showCard(card){
-   card.addClass("show open");
+   if (openCards.length < 2 ){
+     card.addClass("show open");
+   }
  }
 
 //add the card to a *list* of "open" cards
 function open(card) {
   if (card.hasClass('show open')) {
+    if (openCards[0] && openCards[0].context.id === card[0].id)  {
+      console.log("same card");
+    }
+    else if (!card.hasClass('match') && openCards.length < 2) {
       openCards.push(card.children());
+      match(openCards);
+    }
   }
 }
 
-
-
 //if the list already has another card, check to see if the two cards match
 function match(array) {
-  if (array.length > 1){
-    if ((array[0].parent().attr('id') != array[1].parent().attr('id')) && (openCards[0][0].className  === openCards[1][0].className) ) {
+  if (array.length === 2){
+    if ((array[0].parent().attr('id') != array[1].parent().attr('id')) && (
+      openCards[0][0].className  === openCards[1][0].className) ) {
       matchLock();
       moves();
       pairs++;
+      gameOver();
     }
     else {
       setTimeout(notMatch, 800);
@@ -118,7 +124,6 @@ function matchLock() {
   });
 
 }
-
 
 //if the cards do not match, remove the cards from the list and hide the card's symbol
  function notMatch() {
@@ -158,16 +163,12 @@ function starCount(num) {
 function gameOver() {
   if (pairs === 8) {
     clearInterval(timer);
-    let over = confirm('Congratulations, Game Over!\n\n' +
-      'You have a star rating of: ' + stars + '. \n\n' +
-      'It took you ' + Math.round(elapsedTime) + ' seconds and ' + move + ' moves! \n\n Would you like to play again?');
-
-    if(over === true) {
+    $('.modal-body').html(`<p>You Won!</p><p>Your time was ` + minutes.innerHTML + `:` +
+    seconds.innerHTML + `<p>You finished with a star rating of: ` + stars)
+    $('.modal').modal('show');
+    $('#reload').click(function(){
       location.reload();
-    }
-    else {
-      alert('Thanks for playing!');
-    }
+    });
   }
 }
 
@@ -175,6 +176,7 @@ function time() {
   elapsedTime++;
   seconds.innerHTML = pad(elapsedTime%60);
   minutes.innerHTML = pad(parseInt(elapsedTime/60));
+
 }
 
 function pad(num) {
