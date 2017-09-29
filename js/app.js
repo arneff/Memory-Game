@@ -164,7 +164,7 @@ function gameOver() {
   if (pairs === 8) {
     clearInterval(timer);
     $('.modal-body').html(`<p>You Won!</p><p>Your time was ` + minutes.innerHTML + `:` +
-    seconds.innerHTML + `<p>You finished with a star rating of: ` + stars)
+    seconds.innerHTML + `<p>You finished with a star rating of: ` + stars);
     $('.modal').modal('show');
     $('#reload').click(function(){
       location.reload();
